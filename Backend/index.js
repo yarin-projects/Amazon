@@ -4,6 +4,7 @@ import { config } from 'dotenv';
 import seedRouter from './routers/seedRouter.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import notFoudHandler from './middleware/notFoundHandler.js';
+import runServer from './middleware/runServer.js';
 
 config();
 
@@ -22,3 +23,5 @@ app.use('/api/v1/seed', seedRouter);
 
 app.use(errorHandler);
 app.use(notFoudHandler);
+
+runServer(app, process.env.MONGO_CONNECTION, PORT);
