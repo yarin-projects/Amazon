@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
-import HomePage from './pages/Homepage';
+import HomePage from './pages/HomePage';
 import Footer from './components/shared/Footer';
 import Header from './components/shared/Header';
 
