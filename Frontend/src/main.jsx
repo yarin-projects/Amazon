@@ -7,9 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 createRoot(document.getElementById('root')).render(
-   <StrictMode>
-      <HelmetProvider>
-         <App />
-      </HelmetProvider>
-   </StrictMode>
+  <StrictMode>
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
+  </StrictMode>
 );
