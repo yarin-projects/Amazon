@@ -14,7 +14,8 @@ const useRequest = (url, options = {}) => {
         const { data: dataFromServer } = await axios(url, optionsRef.current);
         setData(dataFromServer);
       } catch (error) {
-        setError(error.message || 'Something went wrong');
+        console.log(error);
+        setError(error?.response?.data?.message || 'Something went wrong');
       } finally {
         setIsLoading(false);
       }
