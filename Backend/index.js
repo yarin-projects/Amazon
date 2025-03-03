@@ -5,6 +5,7 @@ import seedRouter from './routers/seedRouter.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import notFoudHandler from './middleware/notFoundHandler.js';
 import runServer from './middleware/runServer.js';
+import productRouter from './routers/productRouter.js';
 
 config();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/v1/seed', seedRouter);
+app.use('/api/v1/products', productRouter);
 
 app.use(errorHandler);
 app.use(notFoudHandler);

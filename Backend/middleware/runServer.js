@@ -1,8 +1,8 @@
 import { connect } from 'mongoose';
 
-const runServer = async (app, MONGO_CONNECTION, PORT) => {
+const runServer = async (app, mongoConnection, PORT) => {
   try {
-    await connect(MONGO_CONNECTION);
+    await connect(mongoConnection);
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
