@@ -22,3 +22,4 @@ StoreProvider.propTypes = {
 };
 
 export default StoreProvider;
+export { Store };
