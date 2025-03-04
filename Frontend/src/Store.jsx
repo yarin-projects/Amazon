@@ -21,5 +21,4 @@ StoreProvider.propTypes = {
   children: PropTypes.node,
 };
 
-export default StoreProvider;
-export { Store };
+export { Store, StoreProvider };
