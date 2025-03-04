@@ -110,7 +110,8 @@ const data = {
     {
       title: 'Pierced Owl Rose Gold Plated Stainless Steel Double',
       price: 10.99,
-      description: 'Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel',
+      description:
+        'Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel',
       category: 'Jewelery',
       image: 'https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg',
       countInStock: 101,
@@ -306,7 +307,8 @@ const data = {
       price: 7.99,
       description: 'Blue as the ice can see! Cheap, with good quality.',
       category: "Men's Clothing",
-      image: 'https://www.tradeinn.com/f/13711/137118192/jack---jones-slim-straight-tim-original-am-781-50sps-jeans.jpg',
+      image:
+        'https://www.tradeinn.com/f/13711/137118192/jack---jones-slim-straight-tim-original-am-781-50sps-jeans.jpg',
       countInStock: 21,
       token: "Mauricio's Blue Jeans",
       brand: "Mauricio's",
@@ -320,7 +322,8 @@ const data = {
       price: 11.33,
       description: 'You have never worn this black jeans before!',
       category: "Men's Clothing",
-      image: 'https://media.everlane.com/image/upload/c_fill,dpr_2,f_auto,g_face:center,q_auto,w_auto/v1/i/ea356247_56bc.jpg',
+      image:
+        'https://media.everlane.com/image/upload/c_fill,dpr_2,f_auto,g_face:center,q_auto,w_auto/v1/i/ea356247_56bc.jpg',
       countInStock: 21,
       token: 'ALEJANDRO Black Jeans',
       brand: 'Alejandro',
@@ -376,7 +379,8 @@ const data = {
     {
       title: 'Locket Shiv Baba',
       price: 10,
-      description: 'Shiva Baba Pendal Gold Plated Locket, Flexible In Size,Can Be Used By Male, Female & Kids',
+      description:
+        'Shiva Baba Pendal Gold Plated Locket, Flexible In Size,Can Be Used By Male, Female & Kids',
       category: 'Jewelery',
       image: 'https://godlygifts.org/wp-content/uploads/2021/02/17-A-1-1.jpg',
       countInStock: 45,
@@ -393,7 +397,8 @@ const data = {
       description:
         "The Danseuse Étoile choker is timeless and elegant, featuring a gold-finish metal chain and the 'CD' initials. The refined and emblematic necklace can be worn with other styles from the collection for a total look.",
       category: 'Jewelery',
-      image: 'https://media.dior.com/couture/ecommerce/media/catalog/product/n/p/1649195120_N0519DSEMT_D300_E09_GH.jpg',
+      image:
+        'https://media.dior.com/couture/ecommerce/media/catalog/product/n/p/1649195120_N0519DSEMT_D300_E09_GH.jpg',
       countInStock: 9,
       token: 'Danseuse Étoile Choker Gold-finish metal | DIOR',
       brand: 'DIOR',
@@ -466,7 +471,8 @@ const data = {
       price: 6.26,
       description: 'Not-Standard USB Charger',
       category: 'Electronics',
-      image: 'https://i5.walmartimages.com/asr/724c454e-825c-463b-9043-77b203eab4e8.4bdc6597a51ecf647977dcb42c706302.jpeg',
+      image:
+        'https://i5.walmartimages.com/asr/724c454e-825c-463b-9043-77b203eab4e8.4bdc6597a51ecf647977dcb42c706302.jpeg',
       countInStock: 21,
       token: 'USB Charger 3.2',
       brand: 'Samtongue',
@@ -495,7 +501,8 @@ const data = {
       price: 24.85,
       description: "It's Bik-Bok Quality! 100% polyesther with the best of them!",
       category: "Women's Clothing",
-      image: 'https://bikbok.imgix.net/globalassets/productimages/7350553_990_b_q_nw_yoga_pants_1_bikbok_499_49992.jpg',
+      image:
+        'https://bikbok.imgix.net/globalassets/productimages/7350553_990_b_q_nw_yoga_pants_1_bikbok_499_49992.jpg',
       countInStock: 4,
       token: 'Bik-Bok Long Yoga Pants',
       brand: 'Bik-Bok',
@@ -507,7 +514,8 @@ const data = {
     {
       title: 'Designer Pants for Women - FARFETCH',
       price: 14.99,
-      description: 'Walk the walk in style with a striking pair of designer trousers from the expertly picked here at Farfetch',
+      description:
+        'Walk the walk in style with a striking pair of designer trousers from the expertly picked here at Farfetch',
       category: "Women's Clothing",
       image: 'https://cdn-images.farfetch-contents.com/17/49/41/48/17494148_39383743_480.jpg',
       countInStock: 0,
@@ -538,10 +546,6 @@ const data = {
       name: 'Admin',
       email: 'admin@example.com',
       password: bcrypt.hashSync('1234', 10),
-      _id: '64379be3274e949864ae7779',
-      __v: 0,
-      createdAt: '2023-04-13T06:06:27.929Z',
-      updatedAt: '2023-04-13T06:06:27.929Z',
     },
   ],
 };
