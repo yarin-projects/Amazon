@@ -1,4 +1,4 @@
-import { useReducer, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { USER_SIGNIN } from '../actions.js';
@@ -17,7 +17,7 @@ const SignUpPage = () => {
 
   const navigate = useNavigate();
 
-  const { dispatch } = useReducer(Store);
+  const { dispatch } = useContext(Store);
 
   const submitHandler = async event => {
     event.preventDefault();
@@ -27,6 +27,7 @@ const SignUpPage = () => {
       localStorage.setItem('userInfo', JSON.stringify(data));
       navigate('/');
     } catch (error) {
+      console.log(error);
       console.log(error?.response?.data?.message || 'Something went wrong');
     }
   };
@@ -65,7 +66,7 @@ const SignUpPage = () => {
           <Button type="submit" disabled={!passwordDisplay.isMatch} variant="warning">
             Sign Up
           </Button>
-          <div className={passwordDisplay.className + 'mt-1'}>{passwordDisplay.message}</div>
+          <div className={passwordDisplay.className + ' mt-1'}>{passwordDisplay.message}</div>
         </div>
         <div className="mt-2">
           Already have an account? <Link to={'/signin'}>Sign in here</Link>
