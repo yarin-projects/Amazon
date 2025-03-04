@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
-import HomePage from './pages/HomePage';
-import Footer from './components/shared/Footer';
-import Header from './components/shared/Header';
-import SignUpPage from './pages/SignUpPage';
+import HomePage from './pages/home-page';
+import Footer from './components/shared/footer';
+import Header from './components/shared/header';
+import SignUpPage from './pages/sign-up-page';
 
 function App() {
   return (

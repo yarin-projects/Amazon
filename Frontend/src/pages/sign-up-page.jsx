@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { USER_SIGNIN } from '../actions.js';
 import Container from 'react-bootstrap/Container';
-import Title from '../components/shared/Title.jsx';
+import Title from '../components/shared/title.jsx';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';

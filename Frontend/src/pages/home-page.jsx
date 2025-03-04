@@ -1,8 +1,8 @@
-import Title from '../components/shared/Title';
-import Loading from '../components/shared/Loading';
-import useRequest from '../hooks/useRequest';
-import MessageBox from '../components/shared/MessageBox';
-import Products from '../components/home/Products';
+import Title from '../components/shared/title';
+import Loading from '../components/shared/loading';
+import useRequest from '../hooks/use-request';
+import MessageBox from '../components/shared/message-box';
+import Products from '../components/home/products';
 
 const HomePage = () => {
   const { isLoading, error, data: products } = useRequest('/api/v1/products');

@@ -2,7 +2,7 @@ import NavBar from 'react-bootstrap/NavBar';
 import Container from 'react-bootstrap/Container';
 import { LinkContainer } from 'react-router-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import SearchBox from './SearchBox';
+import SearchBox from './search-box';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {

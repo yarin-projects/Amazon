@@ -1,12 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 import { config } from 'dotenv';
-import seedRouter from './routers/seedRouter.js';
-import { errorHandler } from './middleware/errorHandler.js';
-import notFoudHandler from './middleware/notFoundHandler.js';
-import runServer from './middleware/runServer.js';
-import productRouter from './routers/productRouter.js';
-import userRouter from './routers/userRouter.js';
+import { errorHandler } from './middleware/error-handler.js';
+import notFoudHandler from './middleware/not-found-handler.js';
+import runServer from './middleware/run-server.js';
+import seedRouter from './routers/seed.router.js';
+import productRouter from './routers/product.router.js';
+import userRouter from './routers/user.router.js';
 
 config();
 

@@ -1,7 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Rating from '../shared/Rating';
+import Rating from '../shared/rating';
 import Button from 'react-bootstrap/Button';
 
 const Product = ({ product }) => {

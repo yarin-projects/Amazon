@@ -1,7 +1,7 @@
 import Product from '../models/Product.js';
 import User from '../models/User.js';
 import data from '../data.js';
-import { generateCustomError } from '../middleware/errorHandler.js';
+import { generateCustomError } from '../middleware/error-handler.js';
 
 export const seedData = async (req, res, next) => {
   try {

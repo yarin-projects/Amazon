@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import User from '../models/User.js';
-import { generateCustomError } from '../middleware/errorHandler.js';
+import { generateCustomError } from '../middleware/error-handler.js';
 import { generateToken } from '../utils.js';
 
 export const signUp = async (req, res, next) => {
