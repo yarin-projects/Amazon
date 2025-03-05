@@ -22,7 +22,7 @@ const SignUpPage = () => {
   const submitHandler = async event => {
     event.preventDefault();
     try {
-      const { data } = await axios.post('/api/v1/users/1signup', { name, email, password });
+      const { data } = await axios.post('/api/v1/users/signup', { name, email, password });
       dispatch({ type: USER_SIGNIN, payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
       navigate('/');

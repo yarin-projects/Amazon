@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Title from '../components/shared/title';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const SignInPage = () => {
   const [email, setEmail] = useState('');
@@ -27,8 +27,7 @@ const SignInPage = () => {
       localStorage.setItem('userInfo', JSON.stringify(data));
       navigate('/');
     } catch (error) {
-      console.log(error);
-      //   toast.error()
+      toast.error(error.response?.data?.message);
     }
   };
 
@@ -51,7 +50,7 @@ const SignInPage = () => {
           </Button>
         </div>
         <div className="mt-2">
-          New customer?&nbsp;<Link to={'/signup'}>Create your account</Link>
+          New customer? <Link to={'/signup'}>Create your account</Link>
         </div>
       </Form>
     </Container>
