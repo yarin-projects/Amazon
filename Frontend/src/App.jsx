@@ -4,11 +4,13 @@ import HomePage from './pages/home-page';
 import Footer from './components/shared/footer';
 import Header from './components/shared/header';
 import SignUpPage from './pages/sign-up-page';
+// import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="d-flex flex-column side-allPage">
+        {/* <ToastContainer position="top-center" limit={1} /> */}
         <Header />
         <main>
           <Container className="mt-3">

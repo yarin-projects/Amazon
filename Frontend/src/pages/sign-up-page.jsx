@@ -8,6 +8,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { Store } from '../store.jsx';
+// import { toast } from 'react-toastify';
 
 const SignUpPage = () => {
   const [name, setName] = useState('');
@@ -28,7 +29,7 @@ const SignUpPage = () => {
       navigate('/');
     } catch (error) {
       console.log(error);
-      console.log(error?.response?.data?.message || 'Something went wrong');
+      // toast.error(error?.response?.data?.message || 'Something went wrong');
     }
   };
   const passwordDisplay =

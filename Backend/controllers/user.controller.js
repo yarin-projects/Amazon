@@ -1,18 +1,35 @@
-import bcrypt from 'bcrypt';
 import User from '../models/user.model.js';
 import { generateCustomError } from '../middleware/error-handler.middleware.js';
-import { generateToken } from '../utils.js';
+import { comparePasswords, generateToken, hashPassword } from '../utils.js';
 
 export const signUp = async (req, res, next) => {
   const { name, email, password } = req.body;
-  const hashedPassword = password && (await bcrypt.hash(password, 10));
+  const hashedPassword = await hashPassword(password);
   try {
     const user = await User.create({
       name,
       email,
       password: hashedPassword,
     });
-    res.status(201).json({
+    return res.status(201).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user),
+    });
+  } catch (error) {
+    next(generateCustomError(400, error.message || 'Invalid credentials. Please try again'));
+  }
+};
+
+export const signIn = async (req, res, next) => {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (!user || !(await comparePasswords(password, user.password))) {
+      next(generateCustomError(400, error.message || 'Invalid credentials. Please try again'));
+    }
+    return res.status(201).json({
       _id: user._id,
       name: user.name,
       email: user.email,
