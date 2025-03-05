@@ -4,9 +4,20 @@ import { LinkContainer } from 'react-router-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import SearchBox from './search-box';
 import { Link, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { Store } from '../../store';
+import { USER_SIGNOUT } from '../../actions';
 
 const Header = () => {
   const navigate = useNavigate();
+  const {
+    state: { userInfo },
+    dispatch,
+  } = useContext(Store);
+  const handleSignOut = () => {
+    dispatch({ type: USER_SIGNOUT });
+    localStorage.removeItem('userInfo');
+  };
   return (
     <header>
       <NavBar bg="dark" variant="dark">
@@ -30,15 +41,31 @@ const Header = () => {
           <nav className="d-flex aign-items-center justify-content-end me-3 ms-4">
             <i className="fas fa-shopping-cart text-white"></i>
           </nav>
-          <NavDropdown className="text-white" title="Sign In">
-            <LinkContainer className="me-2 ms-2 text-black nav-link" to="/signin">
-              <NavDropdown.Item>Sign In</NavDropdown.Item>
-            </LinkContainer>
-            <NavDropdown.Divider />
-            <LinkContainer className="me-2 ms-2 text-black nav-link" to="/signup">
-              <NavDropdown.Item>Sign Up</NavDropdown.Item>
-            </LinkContainer>
-          </NavDropdown>
+          {userInfo ? (
+            <NavDropdown className="text-white" title={userInfo.name}>
+              <LinkContainer to="/profile" onClick={() => {}}>
+                <NavDropdown.Item>Profile</NavDropdown.Item>
+              </LinkContainer>
+              <NavDropdown.Divider />
+              <LinkContainer to="/orderhistory" onClick={() => {}}>
+                <NavDropdown.Item>Order History</NavDropdown.Item>
+              </LinkContainer>
+              <NavDropdown.Divider />
+              <LinkContainer to="/" onClick={handleSignOut}>
+                <NavDropdown.Item>Sign-Out</NavDropdown.Item>
+              </LinkContainer>
+            </NavDropdown>
+          ) : (
+            <NavDropdown className="text-white" title="Sign In">
+              <LinkContainer to="/signin">
+                <NavDropdown.Item>Sign In</NavDropdown.Item>
+              </LinkContainer>
+              <NavDropdown.Divider />
+              <LinkContainer to="/signup">
+                <NavDropdown.Item>Sign Up</NavDropdown.Item>
+              </LinkContainer>
+            </NavDropdown>
+          )}
         </Container>
       </NavBar>
     </header>
