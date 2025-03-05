@@ -7,19 +7,19 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { Store } from '../../store';
 import { USER_SIGNOUT } from '../../actions';
+import Badge from 'react-bootstrap/Badge';
 
 const Header = () => {
-  const {
-    state: { userInfo },
-    dispatch,
-  } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
+  const { userInfo, cart } = state;
+  const { cartItems } = cart;
   const handleSignOut = () => {
     dispatch({ type: USER_SIGNOUT });
-    localStorage.removeItem('userInfo');
   };
   const navigate = useNavigate();
   const location = useLocation();
   const canGoBack = location.key !== 'default';
+  const countTotalProductsInCart = () => cartItems.reduce((a, c) => a + c.quantity, 0);
   return (
     <header>
       <NavBar bg="dark" variant="dark">
@@ -41,6 +41,11 @@ const Header = () => {
           <SearchBox />
           <nav className="d-flex aign-items-center justify-content-end me-3 ms-4">
             <i className="fas fa-shopping-cart text-white"></i>
+            {cartItems.length > 0 && (
+              <Badge pill bg="danger">
+                {countTotalProductsInCart()}
+              </Badge>
+            )}
           </nav>
           {userInfo ? (
             <NavDropdown className="text-white" title={userInfo.name}>
