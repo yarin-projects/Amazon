@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
-import HomePage from './pages/home-page';
 import Footer from './components/shared/footer';
 import Header from './components/shared/header';
-import SignUpPage from './pages/sign-up-page';
-import SignInPage from './pages/sign-in-page';
+import HomePage from './pages/home.page';
+import SignUpPage from './pages/sign-up.page';
+import SignInPage from './pages/sign-in.page';
+import ProductPage from './pages/product.page';
 import { ToastContainer } from 'react-toastify';
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/signin" element={<SignInPage />} />
-              {/* <Route path="/product/:token" element={<ProductPage/>}/> */}
+              <Route path="/product/:token" element={<ProductPage />} />
             </Routes>
           </Container>
         </main>
