@@ -1,6 +1,6 @@
 import Spinner from 'react-bootstrap/Spinner';
 
-const ComponentName = () => {
+const Loading = () => {
   return (
     <Spinner animation="border" role="status">
       <span className="visually-hidden">Loading...</span>
@@ -8,4 +8,4 @@ const ComponentName = () => {
   );
 };
 
-export default ComponentName;
+export default Loading;
