@@ -5,10 +5,12 @@ const storeReducer = (state, { type, payload }) => {
     case USER_SIGNIN:
       return { ...state, userInfo: payload };
     case USER_SIGNOUT:
-      localStorage.clear();
+      localStorage.removeItem('userInfo');
+      localStorage.removeItem('shippingAddress');
+      localStorage.removeItem('paymentMethod');
       return {
         userInfo: null,
-        cart: { cartItems: [], shippingAddress: {}, paymentMethod: '' },
+        cart: { ...state.cart, shippingAddress: {}, paymentMethod: '' },
       };
     case ADD_TO_CART: {
       const newItem = payload;
