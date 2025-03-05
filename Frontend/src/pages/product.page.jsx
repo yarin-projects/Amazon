@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useRequest } from '../hooks/useRequest';
 import { Store } from '../store';
 import { addToCartHandler } from '../utils';
+import useRequest from '../hooks/use-request';
 import Loading from '../components/shared/loading';
 import MessageBox from '../components/shared/message-box';
 import ProductDescription from '../components/product/product-description';
