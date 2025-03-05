@@ -3,13 +3,12 @@ import Container from 'react-bootstrap/Container';
 import { LinkContainer } from 'react-router-bootstrap';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import SearchBox from './search-box';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { Store } from '../../store';
 import { USER_SIGNOUT } from '../../actions';
 
 const Header = () => {
-  const navigate = useNavigate();
   const {
     state: { userInfo },
     dispatch,
@@ -18,16 +17,18 @@ const Header = () => {
     dispatch({ type: USER_SIGNOUT });
     localStorage.removeItem('userInfo');
   };
+  const navigate = useNavigate();
+  const location = useLocation();
+  const canGoBack = location.key !== 'default';
   return (
     <header>
       <NavBar bg="dark" variant="dark">
         <Container>
-          {/* TODO: Ensure that using back button doesnt take user outside of the site */}
-          <Link onClick={() => navigate(-1)}>
-            {location.pathname !== '/' && (
+          {canGoBack && (
+            <Link onClick={() => navigate(-1)}>
               <i className="fas fa-arrow-left text-white align-arrow-right"> Back</i>
-            )}
-          </Link>
+            </Link>
+          )}
           <LinkContainer to="/">
             <NavBar.Brand>
               <img
