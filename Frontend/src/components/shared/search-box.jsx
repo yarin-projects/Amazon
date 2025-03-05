@@ -7,7 +7,11 @@ const SearchBox = () => {
   return (
     <Form onSubmit={() => {}} className="d-flex me-auto w-50">
       <InputGroup>
-        <FormControl type="text" placeholder="Search for products..." onChange={() => {}}></FormControl>
+        <FormControl
+          type="text"
+          placeholder="Search for products..."
+          onChange={() => {}}
+        ></FormControl>
         <Button variant="warning" type="submit">
           <i className="fas fa-search"></i>
         </Button>
