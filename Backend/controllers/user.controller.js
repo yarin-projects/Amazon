@@ -18,7 +18,7 @@ export const signUp = async (req, res, next) => {
       token: generateToken(user),
     });
   } catch (error) {
-    next(generateCustomError(400, error.message || 'Invalid credentials. Please try again'));
+    return next(generateCustomError(400, error.message || 'Invalid credentials. Please try again'));
   }
 };
 
@@ -27,7 +27,9 @@ export const signIn = async (req, res, next) => {
   try {
     const user = await User.findOne({ email });
     if (!user || !(await comparePasswords(password, user.password))) {
-      next(generateCustomError(400, error.message || 'Invalid credentials. Please try again'));
+      return next(
+        generateCustomError(400, error.message || 'Invalid credentials. Please try again')
+      );
     }
     return res.status(201).json({
       _id: user._id,
@@ -36,6 +38,6 @@ export const signIn = async (req, res, next) => {
       token: generateToken(user),
     });
   } catch (error) {
-    next(generateCustomError(400, error.message || 'Invalid credentials. Please try again'));
+    return next(generateCustomError(400, error.message || 'Invalid credentials. Please try again'));
   }
 };
