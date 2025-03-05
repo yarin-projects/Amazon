@@ -22,7 +22,7 @@ export const addToCartHandler = async (product, cartItems, dispatch) => {
   const existingItem = cartItems.find(item => item.token === product.token);
   const quantity = existingItem ? existingItem.quantity + 1 : 1;
   try {
-    const { data } = await axios.get(`/api/products/token/${product.token}`);
+    const { data } = await axios.get(`/api/v1/products/token/${product.token}`);
     if (data.countInStock < quantity) {
       toast.error('Product is out of stock');
       return;
