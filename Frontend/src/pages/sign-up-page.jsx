@@ -1,14 +1,13 @@
 import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { USER_SIGNIN } from '../actions.js';
 import Container from 'react-bootstrap/Container';
 import Title from '../components/shared/title.jsx';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
 import { Store } from '../store.jsx';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const SignUpPage = () => {
   const [name, setName] = useState('');
@@ -23,13 +22,12 @@ const SignUpPage = () => {
   const submitHandler = async event => {
     event.preventDefault();
     try {
-      const { data } = await axios.post('/api/v1/users/signup', { name, email, password });
+      const { data } = await axios.post('/api/v1/users/1signup', { name, email, password });
       dispatch({ type: USER_SIGNIN, payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
       navigate('/');
     } catch (error) {
-      console.log(error);
-      // toast.error(error?.response?.data?.message || 'Something went wrong');
+      toast.error(error?.response?.data?.message);
     }
   };
   const passwordDisplay =

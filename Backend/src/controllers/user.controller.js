@@ -1,6 +1,6 @@
 import User from '../models/user.model.js';
 import { generateCustomError } from '../middleware/error-handler.middleware.js';
-import { comparePasswords, generateToken, hashPassword } from '../utils.js';
+import { comparePasswords, generateToken, hashPassword } from '../../utils.js';
 
 export const signUp = async (req, res, next) => {
   const { name, email, password } = req.body;

@@ -1,6 +1,6 @@
 import Product from '../models/product.model.js';
 import User from '../models/user.model.js';
-import data from '../data.js';
+import data from '../../data.js';
 import { generateCustomError } from '../middleware/error-handler.middleware.js';
 
 export const seedData = async (req, res, next) => {
