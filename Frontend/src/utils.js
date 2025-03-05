@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { ADD_TO_CART } from './actions';
+
 export const getLocalStorageItems = () => {
   const userInfo = localStorage.getItem('userInfo')
     ? JSON.parse(localStorage.getItem('userInfo'))
@@ -12,4 +15,20 @@ export const getLocalStorageItems = () => {
     ? JSON.parse(localStorage.getItem('paymentMethod'))
     : '';
   return { userInfo, cartItems, shippingAddress, paymentMethod };
+};
+
+export const addToCartHandler = async (product, cartItems, dispatch) => {
+  const existingItem = cartItems.find(x => x._id === product._id);
+  const quantity = existingItem ? existingItem.quantity + 1 : 1;
+  try {
+    const { data } = await axios.get(`api/v1/products/${product._id}`);
+    if (data.countInStock < quantity) {
+      // toast.error('Sorry, Product is out of stock');
+      return;
+    }
+    dispatch({ type: ADD_TO_CART, payload: { ...product, quantity } });
+  } catch (error) {
+    console.log(error);
+    // toast.error(error.response?.data?.message);
+  }
 };

@@ -3,9 +3,16 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Rating from '../shared/rating';
 import Button from 'react-bootstrap/Button';
+import { useContext } from 'react';
+import { Store } from '../../store';
 
 const Product = ({ product }) => {
   const productLink = `/product/${product.token}`;
+  const {
+    state: { cart },
+    dispatch,
+  } = useContext(Store);
+  const { cartItems } = cart;
   return (
     <Card className="product-card">
       <Link to={productLink}>
