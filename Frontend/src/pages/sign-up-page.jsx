@@ -40,8 +40,8 @@ const SignUpPage = () => {
       : { isMatch: true, className: 'text-success', message: 'Passwords match' };
   return (
     <Container className="small-container">
-      <Title title="Sign Up" />
-      <h1 className="my-3">Sign Up</h1>
+      <Title title="Sign-Up" />
+      <h1 className="my-3">Sign-Up</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="name">
           <Form.Label>Name: </Form.Label>
