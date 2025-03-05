@@ -51,7 +51,7 @@ const Header = () => {
                 <NavDropdown.Item>Order History</NavDropdown.Item>
               </LinkContainer>
               <NavDropdown.Divider />
-              <LinkContainer to="/" onClick={handleSignOut}>
+              <LinkContainer className="drop-down-item text-dark" to="/" onClick={handleSignOut}>
                 <NavDropdown.Item>Sign-Out</NavDropdown.Item>
               </LinkContainer>
             </NavDropdown>

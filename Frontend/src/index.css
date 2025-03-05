@@ -6,6 +6,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.drop-down-item {
+  background-color: transparent !important;
+}
+
 .products {
   display: flex;
   flex-wrap: wrap;
