@@ -5,13 +5,12 @@ import Rating from '../shared/rating';
 import Button from 'react-bootstrap/Button';
 import { useContext } from 'react';
 import { Store } from '../../store';
+import { addToCartHandler } from '../../utils';
 
 const Product = ({ product }) => {
   const productLink = `/product/${product.token}`;
-  const {
-    state: { cart },
-    dispatch,
-  } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
+  const { cart } = state;
   const { cartItems } = cart;
   return (
     <Card className="product-card">
@@ -36,7 +35,11 @@ const Product = ({ product }) => {
             Out of Stock
           </Button>
         ) : (
-          <Button variant="warning" className="mb-2 mt-auto">
+          <Button
+            onClick={() => addToCartHandler(product, cartItems, dispatch)}
+            variant="warning"
+            className="mb-2 mt-auto"
+          >
             Add to Cart
           </Button>
         )}
