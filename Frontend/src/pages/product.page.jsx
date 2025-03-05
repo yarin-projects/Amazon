@@ -9,6 +9,7 @@ import ProductDescription from '../components/product/product-description';
 import CartDescription from '../components/product/cart-description';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Title from '../components/shared/title';
 
 const ProductPage = () => {
   const { token } = useParams();
@@ -28,19 +29,20 @@ const ProductPage = () => {
       ) : error ? (
         <MessageBox variant={'danger'}>{error}</MessageBox>
       ) : (
-        <div>
+        <>
+          <Title title={product.title} />
           <Row>
-            <Col md={6}>
-              <img src={product.image} alt={product.name} width={400} />
+            <Col md={5}>
+              <img src={product.image} alt={product.title} width={400} />
             </Col>
-            <Col md={3}>
+            <Col md={4}>
               <ProductDescription {...product} />
             </Col>
             <Col md={3}>
               <CartDescription product={product} addToCart={addToCart} />
             </Col>
           </Row>
-        </div>
+        </>
       )}
       ;
     </>
