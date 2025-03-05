@@ -18,17 +18,22 @@ export const getLocalStorageItems = () => {
 };
 
 export const addToCartHandler = async (product, cartItems, dispatch) => {
-  const existingItem = cartItems.find(x => x._id === product._id);
+  const existingItem = cartItems.find(item => item.token === product.token);
   const quantity = existingItem ? existingItem.quantity + 1 : 1;
   try {
-    const { data } = await axios.get(`api/v1/products/${product._id}`);
+    const { data } = await axios.get(`/api/products/token/${product.token}`);
     if (data.countInStock < quantity) {
-      // toast.error('Sorry, Product is out of stock');
+      // toast.error("Product is out of stock");
       return;
     }
-    dispatch({ type: ADD_TO_CART, payload: { ...product, quantity } });
+    dispatch({
+      type: ADD_TO_CART,
+      payload: {
+        ...product,
+        quantity,
+      },
+    });
   } catch (error) {
-    console.log(error);
     // toast.error(error.response?.data?.message);
   }
 };
