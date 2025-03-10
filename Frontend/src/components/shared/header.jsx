@@ -40,12 +40,14 @@ const Header = () => {
           </LinkContainer>{' '}
           <SearchBox />
           <nav className="d-flex aign-items-center justify-content-end me-3 ms-4">
-            <i className="fas fa-shopping-cart text-white"></i>
-            {cartItems.length > 0 && (
-              <Badge pill bg="danger">
-                {countTotalProductsInCart()}
-              </Badge>
-            )}
+            <Link to="/cart" className="me-2 nav-link">
+              <i className="fas fa-shopping-cart text-white"></i>
+              {cartItems.length > 0 && (
+                <Badge pill bg="danger">
+                  {countTotalProductsInCart()}
+                </Badge>
+              )}
+            </Link>
           </nav>
           {userInfo ? (
             <NavDropdown className="text-white" title={userInfo.name}>

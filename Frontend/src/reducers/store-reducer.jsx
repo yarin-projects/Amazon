@@ -1,4 +1,4 @@
-import { ADD_TO_CART, USER_SIGNIN, USER_SIGNOUT } from '../actions.js';
+import { ADD_TO_CART, REMOVE_FROM_CART, USER_SIGNIN, USER_SIGNOUT } from '../actions.js';
 
 const storeReducer = (state, { type, payload }) => {
   switch (type) {
@@ -22,6 +22,11 @@ const storeReducer = (state, { type, payload }) => {
 
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
+      return { ...state, cart: { ...state.cart, cartItems } };
+    }
+    case REMOVE_FROM_CART: {
+      const cartItems = state.cart.cartItems.filter(item => item.token !== payload.token);
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
     }
     default:
