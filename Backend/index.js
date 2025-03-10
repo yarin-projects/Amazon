@@ -7,6 +7,7 @@ import runServer from './src/middleware/run-server.middleware.js';
 import seedRouter from './src/routers/seed.router.js';
 import productRouter from './src/routers/product.router.js';
 import userRouter from './src/routers/user.router.js';
+import orderRouter from './src/routers/order.router.js';
 
 config();
 
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/v1/seed', seedRouter);
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/orders', orderRouter);
 
 app.use(errorHandler);
 app.use(notFoudHandler);
