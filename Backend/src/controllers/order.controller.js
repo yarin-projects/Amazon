@@ -1,7 +1,7 @@
 import Order from '../models/order.model.js';
 
 export const addOrder = async (req, res) => {
-  await Order.create({
+  const newOrder = await Order.create({
     orderItems: req.body.orderItems.map(item => ({ ...item, product: item._id })),
     shippingAddress: req.body.shippingAddress,
     paymentMethod: req.body.paymentMethod,
@@ -12,5 +12,5 @@ export const addOrder = async (req, res) => {
     user: req.user._id,
   });
 
-  return res.status(201).send({ message: 'New Order Confirmed' });
+  return res.status(201).send({ message: 'New Order Confirmed', order: newOrder });
 };

@@ -14,3 +14,5 @@ export const hashPassword = async password => {
 export const comparePasswords = async (password, hashedPassword) => {
   return await bcrypt.compare(password, hashedPassword);
 };
+
+export const round2 = num => Math.round(num * 100 + Number.EPSILON) / 100;
