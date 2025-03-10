@@ -42,7 +42,7 @@ const PaymentPage = () => {
   steps[3].active = true;
   return (
     <>
-      <Title title="Payment" />
+      <Title title="Payment Method" />
       <CheckoutSteps steps={steps} />
       <Container className="small-container">
         <h1 className="my-3">Payment Method</h1>
