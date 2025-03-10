@@ -42,7 +42,7 @@ export const addToCartHandler = async (product, cartItems, dispatch) => {
 export const countTotalItemsInCart = cartItems => cartItems.reduce((a, c) => a + c.quantity, 0);
 export const countTotalPrice = cartItems => cartItems.reduce((a, c) => a + c.quantity * c.price, 0);
 
-export const orderSteps = [
+const orderSteps = [
   {
     active: false,
     text: 'Sign-In',
@@ -60,3 +60,5 @@ export const orderSteps = [
     text: 'Place Order',
   },
 ];
+
+export const createStepsCopy = () => orderSteps.map(step => ({ ...step }));

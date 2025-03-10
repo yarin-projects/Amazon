@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Title from '../components/shared/title';
 import CheckoutSteps from '../components/shared/checkout-steps';
-import { orderSteps } from '../utils';
+import { createStepsCopy } from '../utils';
 
 const ShippingPage = () => {
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const ShippingPage = () => {
     dispatch({ type: SAVE_SHIPPING_INFO, payload: shippingInfo });
     navigate('/payment');
   };
-  const steps = orderSteps.map(step => ({ ...step }));
+  const steps = createStepsCopy();
   steps[0].active = true;
   steps[1].active = true;
   return (

@@ -7,7 +7,7 @@ import CheckoutSteps from '../components/shared/checkout-steps';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import { orderSteps } from '../utils';
+import { createStepsCopy } from '../utils';
 
 const PaymentPage = () => {
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const PaymentPage = () => {
     }
   }, [userInfo, navigate, shippingAddress, cartItems]);
 
-  const steps = orderSteps.map(step => ({ ...step }));
+  const steps = createStepsCopy();
   steps[0].active = true;
   steps[1].active = true;
   steps[3].active = true;
