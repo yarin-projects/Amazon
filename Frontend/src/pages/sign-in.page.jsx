@@ -1,5 +1,5 @@
-import { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Store } from '../store';
 import axios from 'axios';
 import { USER_SIGNIN } from '../actions';
@@ -14,7 +14,12 @@ const SignInPage = () => {
   const [password, setPassowrd] = useState('');
 
   const navigate = useNavigate();
-  const { dispatch } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
+  const { userInfo } = state;
+
+  const { search } = useLocation();
+  const redirectInUrl = new URLSearchParams(search).get('redirect');
+  const redirect = redirectInUrl ? redirectInUrl : '/';
 
   const submitHandler = async event => {
     event.preventDefault();
@@ -25,11 +30,17 @@ const SignInPage = () => {
       });
       dispatch({ type: USER_SIGNIN, payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
-      navigate('/');
+      navigate(redirect);
     } catch (error) {
       toast.error(error.response?.data?.message);
     }
   };
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [navigate, redirect, userInfo]);
 
   return (
     <Container className="small-container">

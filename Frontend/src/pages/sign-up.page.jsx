@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { USER_SIGNIN } from '../actions.js';
 import Container from 'react-bootstrap/Container';
@@ -19,13 +19,17 @@ const SignUpPage = () => {
 
   const { dispatch } = useContext(Store);
 
+  const { search } = useLocation();
+  const redirectInUrl = new URLSearchParams(search).get('redirect');
+  const redirect = redirectInUrl ? redirectInUrl : '/';
+
   const submitHandler = async event => {
     event.preventDefault();
     try {
       const { data } = await axios.post('/api/v1/users/signup', { name, email, password });
       dispatch({ type: USER_SIGNIN, payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
-      navigate('/');
+      navigate(redirect);
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
