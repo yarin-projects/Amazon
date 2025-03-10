@@ -12,5 +12,5 @@ export const addOrder = async (req, res) => {
     user: req.user._id,
   });
 
-  return res.status(201).send({ message: 'New Order Created' });
+  return res.status(201).send({ message: 'New Order Confirmed' });
 };
