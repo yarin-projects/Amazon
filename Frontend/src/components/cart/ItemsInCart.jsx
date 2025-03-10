@@ -17,7 +17,7 @@ const ItemsInCart = ({ cartItems, updateCartHandler, RemoveItemHandler }) => {
         <ListGroup>
           {cartItems.map(item => {
             <ListGroup.Item key={item.token}>
-              <Row>
+              <Row className="align-items-center">
                 <Col md={4}>
                   <img src={item.image} alt={item.title} className="img-fluid rounded" />{' '}
                   <Link to={`/product/${item.token}`}>{item.title}</Link>
