@@ -2,7 +2,7 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   SAVE_PAYMENT_METHOD,
-  SAVE_SHIPPING_ADDRESS,
+  SAVE_SHIPPING_INFO,
   USER_SIGNIN,
   USER_SIGNOUT,
 } from '../actions.js';
@@ -36,7 +36,7 @@ const storeReducer = (state, { type, payload }) => {
       localStorage.setItem('cartItems', JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
     }
-    case SAVE_SHIPPING_ADDRESS: {
+    case SAVE_SHIPPING_INFO: {
       localStorage.setItem('shippingAddress', JSON.stringify(payload));
       return { ...state, cart: { ...state.cart, shippingAddress: payload } };
     }

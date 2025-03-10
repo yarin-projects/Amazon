@@ -1,21 +1,17 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import PropTypes from 'prop-types';
+import { orderSteps } from '../../utils';
 
-const CheckoutSteps = ({ steps }) => {
+const CheckoutSteps = () => {
   return (
     <Row className="checkout-steps text-center">
-      {steps.map(step => (
+      {orderSteps.map(step => (
         <Col key={step.text} className={step.active ? 'active' : ''}>
           {step.text}
         </Col>
       ))}
     </Row>
   );
-};
-
-CheckoutSteps.propTypes = {
-  steps: PropTypes.array,
 };
 
 export default CheckoutSteps;
