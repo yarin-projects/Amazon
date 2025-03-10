@@ -38,3 +38,6 @@ export const addToCartHandler = async (product, cartItems, dispatch) => {
     toast.error(error.response?.data?.message);
   }
 };
+
+export const countTotalItemsInCart = cartItems => cartItems.reduce((a, c) => a + c.quantity, 0);
+export const countTotalPrice = cartItems => cartItems.reduce((a, c) => a + c.quantity * c.price, 0);

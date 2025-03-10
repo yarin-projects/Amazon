@@ -8,6 +8,7 @@ import { useContext } from 'react';
 import { Store } from '../../store';
 import { USER_SIGNOUT } from '../../actions';
 import Badge from 'react-bootstrap/Badge';
+import { countTotalItemsInCart } from '../../utils';
 
 const Header = () => {
   const { state, dispatch } = useContext(Store);
@@ -19,7 +20,6 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const canGoBack = location.key !== 'default';
-  const countTotalProductsInCart = () => cartItems.reduce((a, c) => a + c.quantity, 0);
   return (
     <header>
       <NavBar bg="dark" variant="dark">
@@ -44,7 +44,7 @@ const Header = () => {
               <i className="fas fa-shopping-cart text-white"></i>
               {cartItems.length > 0 && (
                 <Badge pill bg="danger">
-                  {countTotalProductsInCart()}
+                  {countTotalItemsInCart(cartItems)}
                 </Badge>
               )}
             </Link>
