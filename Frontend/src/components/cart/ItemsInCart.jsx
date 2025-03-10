@@ -15,7 +15,7 @@ const ItemsInCart = ({ cartItems, updateCartHandler, RemoveItemHandler }) => {
         </MessageBox>
       ) : (
         <ListGroup>
-          {cartItems.map(item => {
+          {cartItems.map(item => (
             <ListGroup.Item key={item.token}>
               <Row className="align-items-center">
                 <Col md={4}>
@@ -46,8 +46,8 @@ const ItemsInCart = ({ cartItems, updateCartHandler, RemoveItemHandler }) => {
                   </Button>
                 </Col>
               </Row>
-            </ListGroup.Item>;
-          })}
+            </ListGroup.Item>
+          ))}
         </ListGroup>
       )}
     </>
