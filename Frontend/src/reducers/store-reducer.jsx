@@ -1,5 +1,6 @@
 import {
   ADD_TO_CART,
+  CLEAR_CART,
   REMOVE_FROM_CART,
   SAVE_PAYMENT_METHOD,
   SAVE_SHIPPING_INFO,
@@ -44,6 +45,8 @@ const storeReducer = (state, { type, payload }) => {
       localStorage.setItem('paymentMethod', JSON.stringify(payload));
       return { ...state, cart: { ...state.cart, paymentMethod: payload } };
     }
+    case CLEAR_CART:
+      return { ...state, cart: { ...state.cart, cartItems: [] } };
     default:
       return state;
   }

@@ -29,7 +29,7 @@ const ShippingPage = () => {
     } else if (cartItems.length === 0) {
       navigate('/');
     }
-  }, [cartItems.length, navigate, userInfo]);
+  }, [cartItems, navigate, userInfo]);
 
   const submitHandler = event => {
     event.preventDefault();
