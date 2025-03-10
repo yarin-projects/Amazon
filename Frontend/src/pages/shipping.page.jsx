@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Title from '../components/shared/title';
 import CheckoutSteps from '../components/shared/checkout-steps';
+import { orderSteps } from '../utils';
 
 const ShippingPage = () => {
   const navigate = useNavigate();
@@ -35,10 +36,13 @@ const ShippingPage = () => {
     dispatch({ type: SAVE_SHIPPING_INFO, payload: shippingInfo });
     navigate('/payment');
   };
+  const steps = orderSteps.map(step => ({ ...step }));
+  steps[0].active = true;
+  steps[1].active = true;
   return (
     <>
       <Title title="Shipping" />
-      <CheckoutSteps />
+      <CheckoutSteps steps={steps} />
       <Container>
         <h1 className="my-3">Shipping Info</h1>
         <Form onSubmit={submitHandler}>
