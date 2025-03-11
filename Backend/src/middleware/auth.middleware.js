@@ -1,7 +1,10 @@
+import { generateCustomError } from './error-handler.middleware.js';
+import jwt from 'jsonwebtoken';
+
 export const isAuth = (req, res, next) => {
   try {
     const auth = req.headers.authorization;
-    if (!token) {
+    if (!auth) {
       return next(generateCustomError(401, 'Unauthorized, No Token Found'));
     }
     const token = auth.split(' ')[1];
