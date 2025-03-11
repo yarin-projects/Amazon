@@ -20,7 +20,7 @@ const PaymentPage = () => {
   const submitHandler = event => {
     event.preventDefault();
     dispatch({ type: SAVE_PAYMENT_METHOD, payload: paymentMethodName });
-    navigate('/placeorder');
+    navigate('/place-order');
   };
 
   useEffect(() => {
@@ -37,9 +37,8 @@ const PaymentPage = () => {
   }, [userInfo, navigate, shippingAddress, cartItems]);
 
   const steps = createStepsCopy();
-  steps[0].active = true;
-  steps[1].active = true;
-  steps[3].active = true;
+  steps.forEach(step => (step.active = true));
+  steps[3].active = false;
   return (
     <>
       <Title title="Payment Method" />

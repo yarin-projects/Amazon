@@ -33,8 +33,7 @@ const SubmitOrderPage = () => {
   }, [cartItems, navigate, userInfo, shippingAddress, paymentMethod]);
 
   const { itemsPrice, taxPrice, shippingPrice, totalPrice } = getOrderPrices(cartItems);
-  const submitOrderHandler = async event => {
-    event.preventDefualt();
+  const submitOrderHandler = async () => {
     try {
       setIsLoading(true);
       const { data } = await axios.post(
@@ -141,19 +140,19 @@ const SubmitOrderPage = () => {
                 <ListGroup.Item>
                   <Row className="align-items-center mb-3">
                     <Col>Items</Col>
-                    <Col>${cart.itemsPrice.toFixed(2)}</Col>
+                    <Col>${itemsPrice.toFixed(2)}</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
                     <Col>Shipping</Col>
-                    <Col>${cart.shippingPrice.toFixed(2)}</Col>
+                    <Col>${shippingPrice.toFixed(2)}</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
                     <Col>Tax</Col>
-                    <Col>${cart.taxPrice.toFixed(2)}</Col>
+                    <Col>${taxPrice.toFixed(2)}</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
@@ -162,7 +161,7 @@ const SubmitOrderPage = () => {
                       <strong>Total</strong>
                     </Col>
                     <Col>
-                      <strong>${cart.totalPrice.toFixed(2)}</strong>
+                      <strong>${totalPrice.toFixed(2)}</strong>
                     </Col>
                   </Row>
                 </ListGroup.Item>
