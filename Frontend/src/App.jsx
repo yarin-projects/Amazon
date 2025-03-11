@@ -11,6 +11,7 @@ import CartPage from './pages/cart.page';
 import ShippingPage from './pages/shipping.page';
 import PaymentPage from './pages/payment.page';
 import SubmitOrderPage from './pages/submit-order.page';
+import OrderPage from './pages/order.page';
 
 function App() {
   return (
@@ -22,13 +23,14 @@ function App() {
           <Container className="mt-3">
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/cart" element={<CartPage />} />
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/signin" element={<SignInPage />} />
-              <Route path="/product/:token" element={<ProductPage />} />
-              <Route path="/cart" element={<CartPage />} />
-              <Route path="/shipping" element={<ShippingPage />} />
               <Route path="/payment" element={<PaymentPage />} />
+              <Route path="/shipping" element={<ShippingPage />} />
               <Route path="/place-order" element={<SubmitOrderPage />} />
+              <Route path="/order/:id" element={<OrderPage />} />
+              <Route path="/product/:token" element={<ProductPage />} />
             </Routes>
           </Container>
         </main>
