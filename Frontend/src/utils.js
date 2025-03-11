@@ -41,9 +41,18 @@ export const addToCartHandler = async (product, cartItems, dispatch) => {
 
 export const countTotalItemsInCart = cartItems => cartItems.reduce((a, c) => a + c.quantity, 0);
 export const countTotalPrice = cartItems => cartItems.reduce((a, c) => a + c.quantity * c.price, 0);
-export const round2 = num => Math.round(num * 100 + Number.EPSILON) / 100;
-export const calcTax = price => round2(0.18 * price);
-export const calcShipping = price => (price < 70 ? round2(0.05 * price) : round2(0.1 * price));
+
+const round2 = num => Math.round(num * 100 + Number.EPSILON) / 100;
+const calcTax = price => round2(0.18 * price);
+const calcShipping = price => (price < 70 ? round2(0.05 * price) : round2(0.1 * price));
+
+export const getOrderPrices = cartItems => {
+  const itemsPrice = round2(countTotalPrice(cartItems));
+  const taxPrice = calcTax(itemsPrice);
+  const shippingPrice = calcShipping(itemsPrice);
+  const totalPrice = itemsPrice + taxPrice + shippingPrice;
+  return { itemsPrice, taxPrice, shippingPrice, totalPrice };
+};
 
 const orderSteps = [
   {

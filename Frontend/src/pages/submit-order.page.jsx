@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Store } from '../store';
 import axios from 'axios';
-import { calcShipping, calcTax, countTotalPrice, round2 } from '../utils';
+import { getOrderPrices } from '../utils';
 import { toast } from 'react-toastify';
 import { CLEAR_CART } from '../actions';
 
@@ -24,10 +24,7 @@ const SubmitOrderPage = () => {
     }
   }, [cartItems, navigate, userInfo, shippingAddress, paymentMethod]);
 
-  const itemsPrice = round2(countTotalPrice(cartItems));
-  const taxPrice = calcTax(itemsPrice);
-  const shippingPrice = calcShipping(itemsPrice);
-  const totalPrice = itemsPrice + taxPrice + shippingPrice;
+  const { itemsPrice, taxPrice, shippingPrice, totalPrice } = getOrderPrices(cartItems);
   const submitHandler = async event => {
     event.preventDefualt();
     try {
