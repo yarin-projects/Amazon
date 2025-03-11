@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import CartPage from './pages/cart.page';
 import ShippingPage from './pages/shipping.page';
 import PaymentPage from './pages/payment.page';
+import SubmitOrderPage from './pages/submit-order.page';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path="/cart" element={<CartPage />} />
               <Route path="/shipping" element={<ShippingPage />} />
               <Route path="/payment" element={<PaymentPage />} />
+              <Route path="/place-order" element={<SubmitOrderPage />} />
             </Routes>
           </Container>
         </main>
