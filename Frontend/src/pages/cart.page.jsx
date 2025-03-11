@@ -36,7 +36,7 @@ const CartPage = () => {
     dispatch({ type: REMOVE_FROM_CART, payload: item });
   };
   const checkoutHandler = () => {
-    navigate('/signin?redirect=shipping');
+    navigate('/signin?redirect=/shipping');
   };
   return (
     <>
