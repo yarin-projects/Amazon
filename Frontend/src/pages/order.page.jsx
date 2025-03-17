@@ -19,7 +19,7 @@ const OrderPage = () => {
     isLoading,
     error,
     data: order,
-  } = useRequest(`/api/v1/orders/${orderId}`, {
+  } = useRequest(`/api/v1/orders/id/${orderId}`, {
     headers: {
       authorization: `Bearer ${userInfo?.token}`,
     },

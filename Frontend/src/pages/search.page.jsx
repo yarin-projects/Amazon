@@ -58,17 +58,17 @@ const SearchPage = () => {
                 >
                   All
                 </Link>
-                {categories.map(c => (
-                  <li key={c}>
-                    <Link
-                      className={c === category ? 'text-bold' : ''}
-                      to={getFilterUrl(search, { category: c })}
-                    >
-                      {c}
-                    </Link>
-                  </li>
-                ))}
               </li>
+              {categories.map(c => (
+                <li key={c}>
+                  <Link
+                    className={c === category ? 'text-bold' : ''}
+                    to={getFilterUrl(search, { category: c })}
+                  >
+                    {c}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>
@@ -87,12 +87,12 @@ const SearchPage = () => {
             </ul>
           </div>
           <div>
-            <h3>Avg. Customer Ratings</h3>
+            <h3>Ratings</h3>
             <ul>
               {rates.map(r => (
-                <li key={r.value}>
+                <li key={r.rating}>
                   <Link
-                    className={r.value === rating ? 'text-bold' : ''}
+                    className={r.rating === rating ? 'text-bold' : ''}
                     to={getFilterUrl(search, { rating: r.rating })}
                   >
                     <Rating rating={r.rating} caption={' '} />
@@ -114,13 +114,16 @@ const SearchPage = () => {
           ) : (
             <>
               <Row>
-                <Col md={6}>
-                  <div>
-                    {countProducts === 0 ? 'No' : countProducts} Results
-                    {query !== 'all' && ': ' + query}
-                    {category !== 'all' && ': ' + category}
-                    {price !== 'all' && ': ' + price}
-                    {rating !== 'all' && ': ' + rating + ' Stars'}
+                <Col md={6} className="w-auto">
+                  <div className="d-flex justify-content-start">
+                    <div className="me-2">{countProducts === 0 ? 'No' : countProducts} Results</div>
+                    <div className="me-2">{query !== 'all' && 'Query: ' + query}</div>
+                    <div className="me-2">{category !== 'all' && ' Category: ' + category}</div>
+                    <div className="me-2">
+                      {price !== 'all' &&
+                        ' Price: $' + price.split('-')[0] + ' - $' + price.split('-')[1]}
+                    </div>
+                    <div>{rating !== 'all' && ' Rating: ' + rating + ' Stars'}</div>
                     {(query !== 'all' ||
                       category !== 'all' ||
                       price !== 'all' ||
@@ -159,7 +162,13 @@ const SearchPage = () => {
               </Row>
               <div>
                 {[...Array(pages).keys()].map(num => (
-                  <LinkContainer key={num} to={getFilterUrl(search, { page: num + 1 })}>
+                  <LinkContainer
+                    className="me-1"
+                    key={num}
+                    to={{
+                      search: getFilterUrl(search, { page: num + 1 }).slice(8),
+                    }}
+                  >
                     <Button
                       variant="light"
                       className={Number(page) === num + 1 && 'highlight-current-page'}
