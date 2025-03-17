@@ -41,8 +41,8 @@ export const getProductsByQuery = async (req, res, next) => {
     const category = query.category || '';
 
     const price = query.price || '';
-    const minPrice = Number(price.split('-'))[0];
-    const maxPrice = Number(price.split('-'))[1];
+    const minPrice = Number(price.split('-')[0]);
+    const maxPrice = Number(price.split('-')[1]);
 
     const rating = query.rating || '';
     const order = query.order || '';
