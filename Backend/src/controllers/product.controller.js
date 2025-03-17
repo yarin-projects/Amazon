@@ -23,6 +23,9 @@ export const getProductByToken = async (req, res, next) => {
 export const getProductCategories = async (req, res, next) => {
   try {
     const categories = await Product.find().distinct('category');
+    if (!categories) {
+      return next(generateCustomError(404, 'Categories not found'));
+    }
     return res.send(categories);
   } catch (error) {
     return next(generateCustomError(500, `Server Error: ${error.message}`));
