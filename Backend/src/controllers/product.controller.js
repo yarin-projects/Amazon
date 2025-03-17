@@ -51,6 +51,7 @@ export const getProductsByQuery = async (req, res, next) => {
       price && price !== 'all' ? { price: { $gte: minPrice, $lte: maxPrice } } : {};
     const ratingFilter =
       rating && rating !== 'all' ? { 'rating.rate': { $gte: Number(rating) } } : {};
+
     // 1 for ascending, -1 for descending
     const sortOrder =
       order === 'lowest'
@@ -60,14 +61,19 @@ export const getProductsByQuery = async (req, res, next) => {
         : order === 'topRated'
         ? { rating: -1 }
         : { _id: -1 };
+
     const queryFilter =
       searchQuery && searchQuery !== 'all' ? { title: { $regex: searchQuery, $options: 'i' } } : {};
+
     const filter = { ...queryFilter, ...categoryFilter, ...ratingFilter, ...priceFilter };
+
     const products = await Product.find(filter)
       .sort(sortOrder)
       .skip(pageSize * (page - 1))
       .limit(pageSize);
+
     const countProducts = await Product.countDocuments(filter);
+
     res.send({ products, countProducts, pages: Math.ceil(countProducts / pageSize) });
   } catch (error) {
     return next(generateCustomError(500, `Server Error: ${error.message}`));
