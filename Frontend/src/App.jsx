@@ -12,6 +12,7 @@ import ShippingPage from './pages/shipping.page';
 import PaymentPage from './pages/payment.page';
 import SubmitOrderPage from './pages/submit-order.page';
 import OrderPage from './pages/order.page';
+import SearchPage from './pages/search.page';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route path="/signin" element={<SignInPage />} />
               <Route path="/payment" element={<PaymentPage />} />
               <Route path="/shipping" element={<ShippingPage />} />
+              <Route path='/search' element={<SearchPage />} />
               <Route path="/place-order" element={<SubmitOrderPage />} />
               <Route path="/order/:id" element={<OrderPage />} />
               <Route path="/product/:token" element={<ProductPage />} />

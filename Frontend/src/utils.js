@@ -74,3 +74,22 @@ const orderSteps = [
 ];
 
 export const createStepsCopy = () => orderSteps.map(step => ({ ...step }));
+
+export const getFilterUrl = (searchUri, filter) => {
+  const searchParams = new URLSearchParams(searchUri);
+  const category = searchParams.get('category') || 'all';
+  const query = searchParams.get('query') || 'all';
+  const price = searchParams.get('price') || 'all';
+  const rating = searchParams.get('rating') || 'all';
+  const order = searchParams.get('order') || '';
+  const page = searchParams.get('page') || 1;
+
+  const filterCategory = filter.category || category;
+  const filterQuery = filter.query || query;
+  const filterPrice = filter.price || price;
+  const filterRating = filter.rating || rating;
+  const sortOrder = filter.order || order;
+  const filterPage = filter.page || page;
+
+  return `/search?category=${filterCategory}&query=${filterQuery}&price=${filterPrice}&rating=${filterRating}&order=${sortOrder}&page=${filterPage}`;
+};

@@ -2,8 +2,13 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
+import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SearchBox = () => {
+  const [query, setQuery] = useState('');
+  const navigate = useNavigate();
+  const { search } = useLocation();
   return (
     <Form onSubmit={() => {}} className="d-flex me-auto w-50">
       <InputGroup>
