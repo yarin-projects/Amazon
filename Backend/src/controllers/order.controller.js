@@ -14,3 +14,13 @@ export const addOrder = async (req, res) => {
 
   return res.status(201).send({ message: 'New Order Confirmed', order: newOrder });
 };
+
+export const getOrderById = async (req, res, next) => {
+  const { id } = req.params;
+  const order = await Order.findById(id);
+  if (!order) {
+    return next(generateCustomError(404, 'Order Not Found'));
+  }
+
+  return res.status(200).send(order);
+};
