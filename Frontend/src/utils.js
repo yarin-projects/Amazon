@@ -75,7 +75,7 @@ const orderSteps = [
 
 export const createStepsCopy = () => orderSteps.map(step => ({ ...step }));
 
-export const getFilterUrl = (searchUri, filter) => {
+export const extractParamsFromSearchUri = searchUri => {
   const searchParams = new URLSearchParams(searchUri);
   const category = searchParams.get('category') || 'all';
   const query = searchParams.get('query') || 'all';
@@ -83,7 +83,11 @@ export const getFilterUrl = (searchUri, filter) => {
   const rating = searchParams.get('rating') || 'all';
   const order = searchParams.get('order') || '';
   const page = searchParams.get('page') || 1;
+  return { category, query, price, rating, order, page };
+};
 
+export const getFilterUrl = (searchUri, filter) => {
+  const { category, query, price, rating, order, page } = extractParamsFromSearchUri(searchUri);
   const filterCategory = filter.category || category;
   const filterQuery = filter.query || query;
   const filterPrice = filter.price || price;
@@ -91,5 +95,50 @@ export const getFilterUrl = (searchUri, filter) => {
   const sortOrder = filter.order || order;
   const filterPage = filter.page || page;
 
-  return `/search?category=${filterCategory}&query=${filterQuery}&price=${filterPrice}&rating=${filterRating}&order=${sortOrder}&page=${filterPage}`;
+  return buildSearchQuery(
+    filterCategory,
+    filterQuery,
+    filterPrice,
+    filterRating,
+    sortOrder,
+    filterPage
+  );
 };
+
+export const buildSearchQuery = (category, query, price, rating, order, page) => {
+  return `/search?category=${category}&query=${query}&price=${price}&rating=${rating}&order=${order}&page=${page}`;
+};
+
+export const prices = [
+  {
+    name: '$1 to $50',
+    value: '1-50',
+  },
+  {
+    name: '$50 to $200',
+    value: '50-200',
+  },
+  {
+    name: '$200 to $1000',
+    value: '200-1000',
+  },
+];
+
+export const rates = [
+  {
+    name: '4 stars & up',
+    rating: 4,
+  },
+  {
+    name: '3 stars & up',
+    rating: 3,
+  },
+  {
+    name: '2 stars & up',
+    rating: 2,
+  },
+  {
+    name: '1 stars & up',
+    rating: 1,
+  },
+];
