@@ -47,8 +47,10 @@ export const getProductsByQuery = async (req, res, next) => {
     const searchQuery = query.query || '';
 
     const categoryFilter = category && category !== 'all' ? { category } : {};
+    
     const priceFilter =
       price && price !== 'all' ? { price: { $gte: minPrice, $lte: maxPrice } } : {};
+
     const ratingFilter =
       rating && rating !== 'all' ? { 'rating.rate': { $gte: Number(rating) } } : {};
 
