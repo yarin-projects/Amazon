@@ -39,15 +39,17 @@ export const getProductsByQuery = async (req, res, next) => {
 
     const page = query.page || 1;
     const category = query.category || '';
+
     const price = query.price || '';
     const minPrice = Number(price.split('-'))[0];
     const maxPrice = Number(price.split('-'))[1];
+
     const rating = query.rating || '';
     const order = query.order || '';
     const searchQuery = query.query || '';
 
     const categoryFilter = category && category !== 'all' ? { category } : {};
-    
+
     const priceFilter =
       price && price !== 'all' ? { price: { $gte: minPrice, $lte: maxPrice } } : {};
 
