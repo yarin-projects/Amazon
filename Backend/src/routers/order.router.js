@@ -4,7 +4,7 @@ import { addOrder, getOrderById } from '../controllers/order.controller.js';
 
 const orderRoute = Router();
 
-orderRoute.get('/id/:id', isAuth, getOrderById);
 orderRoute.post('/', isAuth, addOrder);
+orderRoute.get('/id/:id', isAuth, getOrderById);
 
 export default orderRoute;
