@@ -11,7 +11,7 @@ import Product from '../components/home/product';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import LinkContainer from 'react-router-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const SearchPage = () => {
   const [categories, setCategories] = useState([]);
@@ -160,7 +160,10 @@ const SearchPage = () => {
                     key={num}
                     to={buildSearchQuery(category, query, price, rating, order, num + 1)}
                   >
-                    <Button variant='light' className={Number(page) === num + 1 && 'highlight-current-page'}>
+                    <Button
+                      variant="light"
+                      className={Number(page) === num + 1 && 'highlight-current-page'}
+                    >
                       {num + 1}
                     </Button>
                   </LinkContainer>
