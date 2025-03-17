@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { buildSearchQuery, extractParamsFromSearchUri, prices, rates } from '../utils';
+import {
+  buildSearchQuery,
+  extractParamsFromSearchUri,
+  getFilterUrl,
+  prices,
+  rates,
+} from '../utils';
 import useRequest from '../hooks/use-request';
 import { toast } from 'react-toastify';
 import Title from '../components/shared/title';
@@ -17,8 +23,9 @@ const SearchPage = () => {
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
   const { search } = useLocation();
-  const { category, query, price, rating, order, page } = extractParamsFromSearchUri(search);
-  const searchQueryUrl = buildSearchQuery(category, query, price, rating, order, page);
+  const searchParams = extractParamsFromSearchUri(search);
+  const { category, query, price, rating, order, page } = searchParams;
+  const searchQueryUrl = getFilterUrl(search, searchParams);
   const {
     isLoading: categoriesLoading,
     error: categoriesError,
@@ -47,7 +54,7 @@ const SearchPage = () => {
               <li>
                 <Link
                   className={category === 'all' ? 'text-bold' : ''}
-                  to={buildSearchQuery('all', query, price, rating, order, page)}
+                  to={getFilterUrl(search, { category: 'all' })}
                 >
                   All
                 </Link>
@@ -55,7 +62,7 @@ const SearchPage = () => {
                   <li key={c}>
                     <Link
                       className={c === category ? 'text-bold' : ''}
-                      to={buildSearchQuery(c, query, price, rating, order, page)}
+                      to={getFilterUrl(search, { category: c })}
                     >
                       {c}
                     </Link>
@@ -71,7 +78,7 @@ const SearchPage = () => {
                 <li key={p.value}>
                   <Link
                     className={p.value === price ? 'text-bold' : ''}
-                    to={buildSearchQuery(category, query, p.value, rating, order, page)}
+                    to={getFilterUrl(search, { price: p.value })}
                   >
                     {p.name}
                   </Link>
@@ -86,7 +93,7 @@ const SearchPage = () => {
                 <li key={r.value}>
                   <Link
                     className={r.value === rating ? 'text-bold' : ''}
-                    to={buildSearchQuery(category, query, price, r.value, order, page)}
+                    to={getFilterUrl(search, { rating: r.rating })}
                   >
                     <Rating rating={r.rating} caption={' '} />
                   </Link>
@@ -133,11 +140,7 @@ const SearchPage = () => {
                   Order By:
                   <select
                     value={order}
-                    onChange={e =>
-                      navigate(
-                        buildSearchQuery(category, query, price, rating, e.target.value, page)
-                      )
-                    }
+                    onChange={e => navigate(getFilterUrl(search, { order: e.target.value }))}
                   >
                     <option value="newest">Newest Arrivals</option>
                     <option value="lowest">Price: Low to High</option>
@@ -156,10 +159,7 @@ const SearchPage = () => {
               </Row>
               <div>
                 {[...Array(pages).keys()].map(num => (
-                  <LinkContainer
-                    key={num}
-                    to={buildSearchQuery(category, query, price, rating, order, num + 1)}
-                  >
+                  <LinkContainer key={num} to={getFilterUrl(search, { page: num + 1 })}>
                     <Button
                       variant="light"
                       className={Number(page) === num + 1 && 'highlight-current-page'}
